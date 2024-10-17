@@ -20,7 +20,7 @@ const buildApi = (parser: string | undefined): API => ({
   },
 });
 
-describe('workbox/1/update-workbox-webpack-plugin-import', () => {
+describe('workbox/6/update-require-to-workbox-rspack-plugin', () => {
   it('test #1', async () => {
     const INPUT = await readFile(join(__dirname, '..', '__testfixtures__/fixture1.input.ts'), 'utf-8');
     const OUTPUT = await readFile(join(__dirname, '..', '__testfixtures__/fixture1.output.ts'), 'utf-8');

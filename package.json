@@ -1,5 +1,5 @@
 {
-  "name": "workbox-1-update-workbox-webpack-plugin-import",
+  "name": "workbox-6-update-require-to-workbox-rspack-plugin",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "20.9.0",

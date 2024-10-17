@@ -3,13 +3,15 @@ export default function transform(file, api, options) {
   const root = j(file.source);
   let dirtyFlag = false;
 
-  // Find the import declaration for 'workbox-webpack-plugin'
-  root.find(j.ImportDeclaration, { source: { value: 'workbox-webpack-plugin' } })
-    .forEach(path => {
-      // Update the import source to '@aaroon/workbox-rspack-plugin'
-      path.node.source.value = '@aaroon/workbox-rspack-plugin';
-      dirtyFlag = true;
-    });
+  // Find require statements
+  root.find(j.CallExpression, {
+    callee: { name: 'require' },
+    arguments: [{ value: 'workbox-webpack-plugin' }]
+  }).forEach(path => {
+    // Update the require argument to the new package
+    path.node.arguments[0].value = '@aaroon/workbox-rspack-plugin';
+    dirtyFlag = true;
+  });
 
   return dirtyFlag ? root.toSource() : undefined;
 }
